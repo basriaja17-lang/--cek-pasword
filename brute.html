@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Simulasi Brute Force - EDUKASI</title>
+<style>
+body{font-family:sans-serif;background:#0f172a;color:white;text-align:center;padding:20px}
+.box{background:#1e293b;padding:20px;border-radius:14px;max-width:450px;margin:auto}
+input{padding:12px;width:90%;border-radius:8px;border:none;font-size:16px;text-align:center}
+button{padding:12px 20px;background:#22c55e;border:none;border-radius:8px;font-size:16px;margin-top:12px;font-weight:bold}
+#log{height:120px;overflow:hidden;background:black;text-align:left;padding:10px;font-family:monospace;font-size:13px;margin-top:15px;border-radius:8px;color:#22c55e}
+.bar{height:14px;background:#334155;border-radius:10px;overflow:hidden;margin-top:10px}
+#fill{height:100%;width:0%;background:#22c55e}
+</style>
+</head>
+<body>
+<div class="box">
+<h2>🔓 Simulasi Brute Force</h2>
+<p style="font-size:13px;color:#fbbf24">EDUKASI ONLY - Password dummy milikmu sendiri</p>
+<p>Bikin password dummy buat dites:</p>
+<input id="pw" type="text" placeholder="misal: basri123" maxlength="5">
+<br><button onclick="mulai()">MULAI SERANGAN SIMULASI</button>
+<div class="bar"><div id="fill"></div></div>
+<p id="status">Belum mulai</p>
+<div id="log"></div>
+<p id="hasil"></p>
+</div>
+
+<script>
+function mulai(){
+  let target = document.getElementById('pw').value;
+  if(!target){ alert('Isi password dummy dulu!'); return; }
+  let chars = 'abcdefghijklmnopqrstuvwxyz0123456789';
+  let log = document.getElementById('log');
+  let fill = document.getElementById('fill');
+  let status = document.getElementById('status');
+  log.innerHTML = ''; let percobaan = 0;
+  status.innerHTML = 'Hacker sedang menebak...';
+  let interval = setInterval(()=>{
+    percobaan++;
+    let tebakan = '';
+    for(let i=0;i<target.length;i++) tebakan += chars[Math.floor(Math.random()*chars.length)];
+    log.innerHTML = 'Percobaan '+percobaan+': '+tebakan+'<br>' + log.innerHTML;
+    fill.style.width = Math.min(percobaan*2,100)+'%';
+    if(tebakan === target || percobaan > 300){
+      clearInterval(interval);
+      if(tebakan === target){
+        status.innerHTML = 'JEBOL! Ketemu dalam '+percobaan+' percobaan';
+        document.getElementById('hasil').innerHTML = '⚠️ Password "'+target+'" TERLALU MUDAH DITEBAK<br>Coba bikin yang lebih panjang + ada huruf besar + simbol';
+      } else {
+        status.innerHTML = 'GAGAL JEBOL dalam 300 percobaan';
+        document.getElementById('hasil').innerHTML = '✅ Password "'+target+'" cukup kuat untuk simulasi ini';
+      }
+    }
+  }, 30);
+}
+</script>
+</body>
+</html>
