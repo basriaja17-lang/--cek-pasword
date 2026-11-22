@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cek Password</title>
+<style>
+body{font-family:sans-serif;text-align:center;padding:30px}
+input{padding:12px;width:90%;font-size:18px}
+button{padding:12px 20px;font-size:18px;margin-top:10px}
+</style>
+</head>
+<body>
+<h2>Cek Password</h2>
+<input type="password" id="pw" placeholder="Ketik password">
+<br>
+<button onclick="cek()">Cek</button>
+<p id="hasil"></p>
+<script>
+function cek(){
+let p=document.getElementById('pw').value;
+let h=document.getElementById('hasil');
+if(p.length<6){h.innerHTML='❌ Terlalu pendek';}
+else if(p.length<10){h.innerHTML='⚠️ Lumayan, tapi bisa lebih kuat';}
+else{h.innerHTML='✅ Password Kuat!';}
+}
+</script>
+</body>
+</html>
