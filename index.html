@@ -3,62 +3,123 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SLOT IBAZ - Main Seru</title>
+<title>SLOT IBAZ V3 - SCATTER JACKPOT</title>
 <style>
-body{margin:0;font-family:Arial;background:#1a1a2e;color:white;text-align:center;padding:20px}
-h1{color:#ffd700;font-size:32px;margin:10px}
-.box{background:white;color:#333;border-radius:20px;padding:20px;max-width:400px;margin:0 auto;box-shadow:0 10px 30px rgba(0,0,0,.5)}
-.slot{display:flex;justify-content:center;gap:10px;margin:20px 0}
-.reel{font-size:60px;background:#f0f0f0;width:90px;height:90px;display:flex;align-items:center;justify-content:center;border-radius:15px;border:3px solid #ffd700}
-#koin{font-size:22px;font-weight:bold;color:#1a1a2e}
-button{background:#ffd700;border:none;padding:15px 40px;font-size:22px;font-weight:bold;border-radius:50px;cursor:pointer;margin-top:10px}
-button:active{transform:scale(.95)}
-#hasil{font-size:20px;font-weight:bold;margin-top:15px;min-height:30px}
-.menang{color:green}
-.kalah{color:red}
+body{margin:0;font-family:Arial;background:#0a0a1a;color:#fff;text-align:center;padding:12px}
+h1{color:#ffd700;font-size:28px;text-shadow:0 0 20px #ffd700;margin:5px}
+.lampu{font-size:22px;animation:kedip .4s infinite alternate}
+@keyframes kedip{from{opacity:1}to{opacity:.2}}
+#jackpotBar{background:#ff4757;padding:10px;border-radius:15px;font-weight:bold;font-size:18px;margin:10px auto;max-width:420px;animation:kedip 1s infinite alternate}
+.box{background:linear-gradient(#fff,#ffeaa7);color:#222;border-radius:25px;padding:18px;max-width:430px;margin:10px auto;border:5px solid #ffd700;box-shadow:0 0 40px #ffd700}
+#info{font-size:18px;font-weight:bold;display:flex;justify-content:space-between}
+.slot{display:flex;justify-content:center;gap:6px;margin:18px 0}
+.reel{font-size:48px;background:#fff;width:78px;height:95px;display:flex;align-items:center;justify-content:center;border-radius:12px;border:3px solid #333;flex-direction:column}
+.reel small{font-size:10px;font-weight:bold}
+.muter{animation:goyang .1s infinite}
+@keyframes goyang{0%{transform:translateY(-6px) rotate(-2deg)}100%{transform:translateY(6px) rotate(2deg)}}
+#spinBtn{background:linear-gradient(#ff4757,#ff6b81);color:#fff;border:none;padding:18px 45px;font-size:24px;font-weight:bold;border-radius:50px;cursor:pointer;box-shadow:0 6px 0 #c0392b}
+#spinBtn:active{transform:translateY(4px);box-shadow:none}
+#spinBtn:disabled{opacity:.6}
+#hasil{font-size:19px;font-weight:bold;margin-top:14px;min-height:60px;line-height:1.4}
+.menang{color:#00b894}
+.jackpotTxt{color:#d63031;font-size:22px}
+.scatterTxt{color:#6c5ce7;font-size:20px}
+.tabel{font-size:12px;background:#fff8;border-radius:10px;padding:10px;margin-top:10px;text-align:left;color:#333}
+.tabel b{color:#000}
 </style>
 </head>
 <body>
-<h1>🎰 SLOT IBAZ 🎰</h1>
-<p>Main seru-seruan aja, pake koin pura-pura!</p>
+<div class="lampu">💡✨💡✨💡✨💡✨💡</div>
+<h1>🎰 SLOT IBAZ V3 🎰</h1>
+<div id="jackpotBar">🏆 JACKPOT PROGRESIF: <span id="jackpot">2000</span> KOIN 🏆</div>
 <div class="box">
-<div id="koin">🪙 Koin: <span id="saldo">100</span></div>
+<div id="info"><span>🪙 Koin: <span id="saldo">1000</span></span><span>🎁 Free Spin: <span id="free">0</span></span></div>
 <div class="slot">
-<div class="reel" id="r1">🍒</div>
-<div class="reel" id="r2">🍋</div>
-<div class="reel" id="r3">🍇</div>
+<div class="reel" id="r1">🍒<small>-</small></div>
+<div class="reel" id="r2">🍋<small>-</small></div>
+<div class="reel" id="r3">🍇<small>-</small></div>
+<div class="reel" id="r4">🍊<small>-</small></div>
+<div class="reel" id="r5">⭐<small>-</small></div>
 </div>
-<button onclick="putar()">SPIN! 🎲</button>
-<div id="hasil">Ayo putar!</div>
-<button onclick="reset()" style="background:#ddd;font-size:14px;padding:8px 20px">Reset Koin</button>
+<button id="spinBtn" onclick="putar()">SPIN! 🎲</button>
+<div id="hasil">Siap? Dapetin 3 SCATTER buat Free Spin!</div>
+<div class="tabel">
+<b>CARA MENANG:</b><br>
+⭐⭐⭐ = SCATTER! Dapat <b>5 FREE SPIN</b> Gratis!<br>
+💎💎💎 = JACKPOT! Dapat <b>Semua Jackpot!</b><br>
+7️⃣7️⃣7️⃣ = <b>+500 Koin</b> | 🃏 WILD bisa ganti gambar apa aja!<br>
+3 gambar sama = <b>+100 Koin</b> | 2 gambar sama = <b>+20 Koin</b>
 </div>
-<p style="font-size:12px;opacity:.7">Dibuat oleh Ibaz • Hanya untuk hiburan</p>
+<br><button onclick="reset()" style="background:#636e72;color:#fff;border:none;padding:8px 20px;border-radius:20px">Reset Game</button>
+</div>
+<p style="opacity:.6;font-size:12px">Dibuat Ibaz • Hanya untuk seru-seruan, bukan judi</p>
 <script>
-let saldo = 100;
-let buah = ["🍒","🍋","🍇","🍊","⭐","💎","7️⃣"];
+let saldo=1000, jackpot=2000, free=0, sedang=false;
+let simbol=["🍒","🍋","🍇","🍊","🔔","⭐","💎","7️⃣","🃏"];
+let nama={"🍒":"CHERRY","🍋":"LEMON","🍇":"ANGGUR","🍊":"JERUK","🔔":"LONCENG","⭐":"SCATTER","💎":"JACKPOT","7️⃣":"ANGKA 7","🃏":"WILD"};
+function acak(){
+let r=Math.random();
+if(r<0.08) return "⭐";
+if(r<0.12) return "💎";
+if(r<0.18) return "🃏";
+if(r<0.26) return "7️⃣";
+return simbol[Math.floor(Math.random()*5)];
+}
 function putar(){
-if(saldo <= 0){document.getElementById("hasil").innerHTML="<span class='kalah'>Koin habis! Klik Reset Koin</span>";return;}
-saldo -= 10;
-let a = buah[Math.floor(Math.random()*buah.length)];
-let b = buah[Math.floor(Math.random()*buah.length)];
-let c = buah[Math.floor(Math.random()*buah.length)];
-document.getElementById("r1").innerText=a;
-document.getElementById("r2").innerText=b;
-document.getElementById("r3").innerText=c;
-let hasil = document.getElementById("hasil");
-if(a===b && b===c){
-  let menang = a==="💎"?100: a==="7️⃣"?80:50;
-  saldo+=menang;
-  hasil.innerHTML="<span class='menang'>🎉 JACKPOT! +"+menang+" Koin!</span>";
-} else if(a===b || b===c || a===c){
-  saldo+=20;
-  hasil.innerHTML="<span class='menang'>Lumayan! 2 sama +20 Koin</span>";
-} else {
-  hasil.innerHTML="<span class='kalah'>Belum beruntung, coba lagi!</span>";
+if(sedang) return;
+if(free>0){free--; document.getElementById("free").innerText=free;}
+else{
+if(saldo<50){document.getElementById("hasil").innerHTML="Koin habis! Pencet Reset!";return;}
+saldo-=50; jackpot+=20;
 }
 document.getElementById("saldo").innerText=saldo;
+document.getElementById("jackpot").innerText=jackpot;
+sedang=true; document.getElementById("spinBtn").disabled=true;
+document.getElementById("hasil").innerHTML="MUTER... ⏳🍀";
+let els=[1,2,3,4,5].map(i=>document.getElementById("r"+i));
+els.forEach(e=>e.classList.add("muter"));
+let hit=0;
+let inter=setInterval(()=>{
+els.forEach(e=>{let s=acak(); e.innerHTML=s+"<small>"+nama[s]+"</small>"});
+hit++;
+if(hit>18){
+clearInterval(inter); els.forEach(e=>e.classList.remove("muter"));
+let hasilSimbol=els.map(e=>e.innerText.split("\n")[0]);
+let hasil=document.getElementById("hasil");
+let scatter=hasilSimbol.filter(s=>s==="⭐").length;
+let diamond=hasilSimbol.filter(s=>s==="💎").length;
+// hitung gambar sama, WILD dihitung sebagai joker
+let pesan="";
+if(diamond>=3){
+pesan="<span class='jackpotTxt'>💎💎💎 JACKPOT!!!<br>DAPAT "+jackpot+" KOIN!!! 💎💎💎</span>";
+saldo+=jackpot; jackpot=2000;
+} else if(scatter>=3){
+free+=5; pesan="<span class='scatterTxt'>⭐⭐⭐ SCATTER!!!<br>DAPAT 5 FREE SPIN GRATIS!!! ⭐⭐⭐</span>";
+saldo+=100;
+} else if(hasilSimbol.filter(s=>s==="7️⃣").length>=3){
+saldo+=500; pesan="<span class='menang'>7️⃣7️⃣7️⃣ SUPER! +500 KOIN!</span>";
+} else {
+// cek 3 sama
+let count={}; hasilSimbol.forEach(s=>{count[s]=(count[s]||0)+1});
+let tiga=Object.keys(count).find(k=>count[k]>=3);
+if(tiga){saldo+=100; pesan="<span class='menang'>3 "+tiga+" SAMA! +100 KOIN!</span>";}
+else{
+let dua=Object.keys(count).find(k=>count[k]>=2);
+if(dua){saldo+=20; pesan="2 "+dua+" sama +20 Koin, hampir!";}
+else{pesan="Zonk! Coba lagi, Jackpot nungguin!";}
 }
-function reset(){saldo=100;document.getElementById("saldo").innerText=saldo;document.getElementById("hasil").innerText="Koin di-reset! Ayo main lagi!";}
+}
+if(free>0) pesan+="<br>🎁 Sisa Free Spin: "+free;
+hasil.innerHTML=pesan;
+document.getElementById("saldo").innerText=saldo;
+document.getElementById("jackpot").innerText=jackpot;
+document.getElementById("free").innerText=free;
+sedang=false; document.getElementById("spinBtn").disabled=false;
+if(free>0) document.getElementById("spinBtn").innerText="FREE SPIN! 🎁";
+else document.getElementById("spinBtn").innerText="SPIN! 🎲";
+}},120);
+}
+function reset(){saldo=1000;jackpot=2000;free=0;document.getElementById("saldo").innerText=saldo;document.getElementById("jackpot").innerText=jackpot;document.getElementById("free").innerText=free;document.getElementById("hasil").innerText="Game di-reset! Gas lagi!";}
 </script>
 </body>
 </html>
