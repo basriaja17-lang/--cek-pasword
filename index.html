@@ -123,3 +123,78 @@ function reset(){saldo=1000;jackpot=2000;free=0;document.getElementById("saldo")
 </script>
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SLOT IBAZ V4 - 5x4 SMOOTH</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial;background:#0a0a1f;color:#fff;text-align:center;padding:10px;overflow-x:hidden}
+h1{color:#ffd700;font-size:26px;text-shadow:0 0 20px #ffd700;margin:5px}
+#jackpotBar{background:linear-gradient(90deg,#ff4757,#ff9f43,#ff4757);background-size:200% 100%;animation:geser 2s linear infinite;padding:10px;border-radius:15px;font-weight:bold;font-size:17px;max-width:480px;margin:8px auto}
+@keyframes geser{0%{background-position:0%}100%{background-position:200%}}
+.box{background:linear-gradient(#2d2d5a,#1a1a3a);border-radius:20px;padding:12px;max-width:480px;margin:0 auto;border:4px solid #ffd700;box-shadow:0 0 30px #ffd70088}
+#info{display:flex;justify-content:space-between;font-weight:bold;font-size:16px;padding:5px 5px 10px}
+#info span{background:#0008;padding:6px 12px;border-radius:20px}
+#grid{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;background:#000a;padding:8px;border-radius:15px;overflow:hidden}
+.reel{height:210px;overflow:hidden;background:#111;border-radius:10px;position:relative;border:2px solid #444}
+.strip{position:absolute;left:0;top:0;width:100%;transition:transform 1.2s cubic-bezier(.15,.85,.25,1)}
+.cell{height:52px;display:flex;align-items:center;justify-content:center;font-size:32px;background:#fff;border-bottom:1px solid #eee}
+.cell.win{background:#ffeaa7;box-shadow:inset 0 0 0 3px #ffd700;animation:kedip .4s infinite alternate}
+@keyframes kedip{from{transform:scale(1)}to{transform:scale(1.08)}}
+#spinBtn{background:linear-gradient(#ff4757,#ff6b81);color:#fff;border:none;padding:16px 50px;font-size:24px;font-weight:bold;border-radius:50px;cursor:pointer;box-shadow:0 6px 0 #c0392b;margin-top:12px;width:90%}
+#spinBtn:active{transform:translateY(4px);box-shadow:none}
+#spinBtn:disabled{opacity:.6}
+#hasil{font-size:17px;font-weight:bold;margin-top:12px;min-height:55px;line-height:1.4}
+.menang{color:#55efc4}
+.scatterTxt{color:#a29bfe}
+.jackpotTxt{color:#ffd700;font-size:21px}
+.tabel{font-size:12px;background:#fff;color:#333;border-radius:10px;padding:10px;margin-top:10px;text-align:left}
+</style>
+</head>
+<body>
+<h1>🎰 SLOT IBAZ V4 - 5x4 🎰</h1>
+<div id="jackpotBar">🏆 JACKPOT: <span id="jackpot">5000</span> KOIN 🏆</div>
+<div class="box">
+<div id="info"><span>🪙 <span id="saldo">1000</span></span><span>🎁 Free: <span id="free">0</span></span><span>Bet: 50</span></div>
+<div id="grid"></div>
+<button id="spinBtn" onclick="putar()">SPIN! 🎲</button>
+<div id="hasil">Dapetin ⭐ SCATTER buat Free Spin!<br>💎 = JACKPOT!</div>
+<div class="tabel">
+<b>LINE 5x4 - CARA MENANG:</b><br>
+⭐ x3+ di mana aja = <b>SCATTER! +5 FREE SPIN</b><br>
+💎 x3+ = <b>JACKPOT!</b> | 🃏 WILD = gantiin apa aja<br>
+4 gambar sama 1 baris = <b>+200</b> | 3 sama = <b>+80</b> | 5 sama = <b>+500</b>
+</div>
+<br><button onclick="reset()" style="background:#636e72;color:#fff;border:none;padding:8px 20px;border-radius:20px">Reset</button>
+</div>
+<p style="opacity:.6;font-size:11px">Ibaz Slot V4 • Hanya untuk seru-seruan</p>
+<script>
+let saldo=1000, jackpot=5000, free=0, sedang=false;
+let simbol=["🍒","🍋","🍇","🍊","🔔","⭐","💎","7️⃣","🃏","🍓"];
+let grid=document.getElementById("grid");
+let reels=[];
+for(let c=0;c<5;c++){
+let reelDiv=document.createElement("div"); reelDiv.className="reel";
+let strip=document.createElement("div"); strip.className="strip";
+reelDiv.appendChild(strip); grid.appendChild(reelDiv);
+reels.push(strip);
+// isi awal 4 baris
+for(let r=0;r<4;r++){let cell=document.createElement("div");cell.className="cell";cell.innerText=simbol[Math.floor(Math.random()*5)];strip.appendChild(cell);}
+}
+function acak(){
+let r=Math.random();
+if(r<0.07) return "⭐";
+if(r<0.10) return "💎";
+if(r<0.16) return "🃏";
+if(r<0.22) return "7️⃣";
+return simbol[Math.floor(Math.random()*5)];
+}
+function putar(){
+if(sedang) return;
+if(free>0){free--;}
+else{
+if(saldo<50){document.getElementById("hasil").innerHTML="Koin habis! Reset dulu!";return;}
+saldo-=50
