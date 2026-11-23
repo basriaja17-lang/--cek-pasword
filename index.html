@@ -1,28 +1,73 @@
+Berikut website biodata sederhana dalam satu file. Ganti **Nama Anda**, `foto.jpg`, dan nomor WhatsApp dengan milik Anda. Simpan foto di folder yang sama dengan file HTML; format nomor WhatsApp gunakan kode negara tanpa tanda `+` atau spasi, misalnya `6281234567890`.
+
+```html name=index.html
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Cek Password</title>
-<style>
-body{font-family:sans-serif;text-align:center;padding:30px}
-input{padding:12px;width:90%;font-size:18px}
-button{padding:12px 20px;font-size:18px;margin-top:10px}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Biodata Saya</title>
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 24px;
+      font-family: Arial, sans-serif;
+      color: #1f2937;
+      background: linear-gradient(135deg, #dbeafe, #fce7f3);
+    }
+
+    .kartu {
+      width: min(100%, 360px);
+      padding: 32px 24px;
+      text-align: center;
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 12px 32px #0000001a;
+    }
+
+    .foto {
+      width: 140px;
+      height: 140px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 4px solid #e5e7eb;
+    }
+
+    h1 { margin: 20px 0 8px; }
+    p { margin: 0 0 24px; color: #6b7280; }
+
+    .tombol {
+      display: inline-block;
+      padding: 12px 22px;
+      color: white;
+      font-weight: bold;
+      text-decoration: none;
+      background: #25d366;
+      border-radius: 999px;
+    }
+
+    .tombol:hover { background: #1ebe5d; }
+  </style>
 </head>
 <body>
-<h2>Cek Password</h2>
-<input type="password" id="pw" placeholder="Ketik password">
-<br>
-<button onclick="cek()">Cek</button>
-<p id="hasil"></p>
-<script>
-function cek(){
-let p=document.getElementById('pw').value;
-let h=document.getElementById('hasil');
-if(p.length<6){h.innerHTML='❌ Terlalu pendek';}
-else if(p.length<10){h.innerHTML='⚠️ Lumayan, tapi bisa lebih kuat';}
-else{h.innerHTML='✅ Password Kuat!';}
-}
-</script>
+  <main class="kartu">
+    <img class="foto" src="foto.jpg" alt="Foto Nama Anda">
+    <h1>Nama Anda</h1>
+    <p>Halo! Selamat datang di halaman biodata saya.</p>
+    <a
+      class="tombol"
+      href="https://wa.me/6281234567890"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      Hubungi saya via WhatsApp
+    </a>
+  </main>
 </body>
 </html>
+```
